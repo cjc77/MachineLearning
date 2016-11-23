@@ -25,9 +25,26 @@ def best_fit(xs, yx):
     return slope, y_int
 
 
-ans = best_fit(xs, ys)
-slope = ans[0]
-y_int = ans[1]
+def squared_error(ys_orig, ys_line):
+    """Return Squared Error of LBF."""
+    squared_error = sum((ys_line - ys_orig) ** 2)
+    return squared_error
+
+
+def coefficient_of_determination(ys_orig, ys_line):
+    """Return coefficient of determination (R^2)"""
+    ys_mean = mean(ys_orig)
+    y_mean_line = [ys_mean for y in ys_orig]
+    squared_error_regr = squared_error(ys_orig, ys_line)
+    squared_error_y_mean = squared_error(ys_orig, y_mean_line)
+    r_squared = 1 - (squared_error_regr / squared_error_y_mean)
+    return r_squared
+
+
+# Find line of best fit
+bf_line = best_fit(xs, ys)
+slope = bf_line[0]
+y_int = bf_line[1]
 
 
 # Make regression line
@@ -37,6 +54,11 @@ regression_line = [(slope * x) + y_int for x in xs]
 # Make predictions
 predict_x = 8
 predict_y = slope * predict_x + y_int
+
+
+# Check accuracy
+r_squared = coefficient_of_determination(ys, regression_line)
+print(r_squared)
 
 
 # Plot regression line and data
