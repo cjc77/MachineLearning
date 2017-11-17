@@ -1,0 +1,7 @@
+Scikit-learn: Machine learning in Python
+Natural Language Toolkit (NLTK): The complete toolkit for all NLP techniques.
+Pattern – A web mining module for the with tools for NLP and machine learning.
+TextBlob – Easy to use nl p tools API, built on top of NLTK and Pattern.
+spaCy – Industrial strength N LP with Python and Cython.
+Gensim – Topic Modelling for Humans
+Stanford Core NLP – NLP services and packages by Stanford NLP Group.
