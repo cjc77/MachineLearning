@@ -1,12 +1,14 @@
+import nltk
 
 
 def lexical_diversity(text):
     """
     Lexical richness of a text.
-    Returns how much of the total text is made up
+    Returns proportion of the total text is made up
     of totally distinct words.
     """
     return len(set(text)) / len(text)
+
 
 def percentage(count, total):
     """
@@ -14,3 +16,24 @@ def percentage(count, total):
     a specific word?
     """
     return 100 * count / total
+
+
+def unusual_words(text):
+    """
+    Returns a sorted set of words in the text that are not in
+    the set of common words.
+    """
+    text_vocab = set(w.lower() for w in text if w.isalpha())
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    unusual = text_vocab - english_vocab
+    return sorted(unusual)
+
+
+def content_fraction(text):
+    """
+    Find the fraction of words in text
+    that are not stopwords.
+    """
+    stopwords = nltk.corpus.stopwords.words("english")
+    content = [w for w in text if w.lower() not in stopwords]
+    return len(content) / len(text)
