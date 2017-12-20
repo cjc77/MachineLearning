@@ -38,7 +38,6 @@ def content_fraction(text):
     content = [w for w in text if w.lower() not in stopwords]
     return len(content) / len(text)
 
-
 def stress(pron):
     """
     Return a list of stresses for an input pronunciation.
@@ -59,3 +58,7 @@ def tabulate(cfdist, words, categories):
             # the current category)
             print("{:6}".format(cfdist[category][word]), end=' ')
         print()
+
+def extract_ngrams(n, text):
+    size = len(text)
+    yield [tuple(text[i:i + n]) for i in range(size - n + 1)]
