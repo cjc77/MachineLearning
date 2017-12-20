@@ -9,14 +9,12 @@ def lexical_diversity(text):
     """
     return len(set(text)) / len(text)
 
-
 def percentage(count, total):
     """
     What percentage of a text is taken up by
     a specific word?
     """
     return 100 * count / total
-
 
 def unusual_words(text):
     """
@@ -27,7 +25,6 @@ def unusual_words(text):
     english_vocab = set(w.lower() for w in nltk.corpus.words.words())
     unusual = text_vocab - english_vocab
     return sorted(unusual)
-
 
 def content_fraction(text):
     """
