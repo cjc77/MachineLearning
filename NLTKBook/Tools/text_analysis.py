@@ -44,3 +44,18 @@ def stress(pron):
     Return a list of stresses for an input pronunciation.
     """
     return [char for phone in pron for char in phone if char.isdigit()]
+
+def tabulate(cfdist, words, categories):
+    print("{:16}".format("Category"), end=' ')
+    for word in words:
+        # All words in distribution
+        print("{:>6}".format(word), end=' ')
+    print()
+    for category in categories:
+        # Row heading
+        print("{:16}".format(category), end=' ')
+        for word in words:
+            # Frequencies for each word in that (conditional to
+            # the current category)
+            print("{:6}".format(cfdist[category][word]), end=' ')
+        print()
