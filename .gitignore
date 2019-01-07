@@ -3,5 +3,6 @@
 .ipynb_checkpoints
 training_1
 training_2
+training_checkpoints_text_gen
 checkpoints
 model6.h5
