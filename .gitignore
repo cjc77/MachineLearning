@@ -1,3 +1,9 @@
+# Pycharm
+.idea/
+
+# Pytest
+.pytest_cache/
+
 *.vscode
 *.pyc
 .ipynb_checkpoints
