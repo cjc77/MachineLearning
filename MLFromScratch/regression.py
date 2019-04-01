@@ -2,6 +2,26 @@ import numpy as np
 from numpy.linalg import norm
 
 
+class LinearRegression:
+    def __init__(self, add_intercept=True):
+        self.add_intercept = add_intercept
+        self.theta_hat = []
+
+    def fit(self, X, y):
+        X = self._design_matrix(X)
+        Q, R = qr_decomposition(X)
+        self.theta_hat = solve_triangular(R, Q.T @ y)
+
+    def predict(self, X):
+        X = self._design_matrix(X)
+        return X @ self.theta_hat
+
+    def _design_matrix(self, X):
+        if self.add_intercept:
+            X = np.hstack([np.ones(shape=(X.shape[0], 1)), X])
+        return X
+
+
 def householder_reflection(a, e):
     u = a - np.sign(a[0]) * norm(a) * e
     v = u / norm(u)
